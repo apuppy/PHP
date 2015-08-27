@@ -1,0 +1,4 @@
+# usually use in php-cli mode
+1.需要先安装pcntl扩展
+2.只能在php-cli（命令行）模式运行
+3.能实现进程控制，如进程创建，接收信号并处理
