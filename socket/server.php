@@ -1,0 +1,19 @@
+<?php
+	$serverSendStr='服务端';
+	$proto=getprotobyname('tcp');
+	//建立socket
+	$socket=socket_create(AF_INET,SOCK_STREAM,$proto);
+	//绑定端口
+	socket_bind($socket,'localhost',1224);
+	//监听端口
+	if(socket_listen($socket)){
+		//接收
+		$receiveSocket=socket_create(AF_INET,SOCK_STREAM,getprotobyname('tcp'));
+		$receiveSocket=socket_accept($socket);
+		socket_write($receiveSocket,$serverSendStr,1024);
+		$receiveStr=socket_read($receiveSocket,1024);
+		echo 'client:'.$receiveStr;
+	}
+	socket_close($receiveSocket);
+	socket_close($socket);
+?>
