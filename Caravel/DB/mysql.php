@@ -1,13 +1,11 @@
 <?php
-
+require_once('./config/mysql.php');
 class mysql{
-
     //mysql连接资源
     public $link;
 
     //初始化
     public function __construct(){
-        require_once('./config/mysql.php');
         $this->link = mysqli_connect($mysql['ip'],$mysql['user'],$mysql['password']);
     }
 
